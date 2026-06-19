@@ -24,7 +24,16 @@ export function Navbar() {
     <header className="fixed left-1/2 top-5 z-50 w-[min(96%,1100px)] -translate-x-1/2 lg:top-7">
       <div className="rounded-full border border-forest/12 bg-cream/85 backdrop-blur-md shadow-[0_8px_30px_-12px_rgba(31,59,45,0.18)]">
         <div className="flex items-center justify-between px-5 py-2.5">
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 shrink-0"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+            }}
+          >
             <ClinicalScaleMark className="h-8 w-8" />
             <span className="font-display text-lg font-medium text-forest tracking-tight hidden sm:inline">
               Clinical <span className="text-gold">Scale</span>
