@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "Clinical Scale — El programari dental que creix amb la teva clínica",
+    "description": "Agenda, pacients, pressupostos, cobraments i IA clínica en un sol lloc. Sense papers i complint el RGPD. Demana una demo gratis."
+  },
+  "nav": {
+    "features": "Funcionalitats",
+    "differentiators": "Per què nosaltres",
+    "rgpd": "Seguretat i RGPD",
+    "faq": "Preguntes freqüents",
+    "login": "Accedir",
+    "demoCta": "Demanar demo"
+  },
+  "hero": {
+    "eyebrow": "Programari dental al núvol",
+    "title1": "El programari dental",
+    "title2": "que creix amb la teva clínica.",
+    "subtitle": "Agenda, pacients, pressupostos, cobraments i IA clínica en un sol lloc. Sense papers i complint el RGPD.",
+    "primaryCta": "Demanar una demo gratis",
+    "secondaryCta": "Accedir al teu compte",
+    "trust1": "Compliment RGPD",
+    "trust2": "Dades allotjades a la UE",
+    "trust3": "Migració inclosa"
+  }
+}

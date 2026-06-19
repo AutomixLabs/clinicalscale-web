@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "Clinical Scale — El software dental que escala con tu clínica",
+    "description": "Agenda, pacientes, presupuestos, cobros e IA clínica en un solo sitio. Sin papeles y cumpliendo el RGPD. Pide una demo gratis."
+  },
+  "nav": {
+    "features": "Funcionalidades",
+    "differentiators": "Por qué nosotros",
+    "rgpd": "Seguridad y RGPD",
+    "faq": "Preguntas frecuentes",
+    "login": "Acceder",
+    "demoCta": "Pedir demo"
+  },
+  "hero": {
+    "eyebrow": "Software dental en la nube",
+    "title1": "El software dental",
+    "title2": "que escala con tu clínica.",
+    "subtitle": "Agenda, pacientes, presupuestos, cobros e IA clínica en un solo sitio. Sin papeles y cumpliendo el RGPD.",
+    "primaryCta": "Pedir una demo gratis",
+    "secondaryCta": "Acceder a tu cuenta",
+    "trust1": "Cumplimiento RGPD",
+    "trust2": "Datos alojados en la UE",
+    "trust3": "Migración incluida"
+  }
+}
