@@ -39,23 +39,35 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <div className="hidden md:flex items-center text-[11px] tracking-display font-medium text-muted">
+          <div className="flex items-center gap-2.5">
+            <div className="hidden md:flex items-center gap-0.5 rounded-full border border-forest/15 bg-cream-soft p-0.5 shadow-inner relative">
               <Link
                 href={pathname}
                 locale="es"
-                className={cn("px-2 py-1 transition-colors", locale === "es" ? "text-forest" : "hover:text-forest/70")}
+                className={cn(
+                  "relative z-10 px-3 py-1 text-[11px] tracking-display font-semibold rounded-full transition-colors",
+                  locale === "es" ? "text-cream" : "text-muted hover:text-forest"
+                )}
               >
                 ES
               </Link>
-              <span className="text-line">·</span>
               <Link
                 href={pathname}
                 locale="ca"
-                className={cn("px-2 py-1 transition-colors", locale === "ca" ? "text-forest" : "hover:text-forest/70")}
+                className={cn(
+                  "relative z-10 px-3 py-1 text-[11px] tracking-display font-semibold rounded-full transition-colors",
+                  locale === "ca" ? "text-cream" : "text-muted hover:text-forest"
+                )}
               >
                 CA
               </Link>
+              <span
+                className={cn(
+                  "absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-forest shadow-md transition-transform duration-300 ease-out",
+                  locale === "ca" ? "translate-x-[calc(100%-0px)]" : "translate-x-0",
+                  "left-0.5"
+                )}
+              />
             </div>
 
             <a

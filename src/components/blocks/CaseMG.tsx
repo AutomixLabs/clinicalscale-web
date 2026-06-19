@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl"
 import { Quote } from "lucide-react"
+import { Counter } from "@/components/animations/Counter"
+import { Reveal } from "@/components/animations/Reveal"
 
 export function CaseMG() {
   const t = useTranslations("case")
@@ -20,30 +22,38 @@ export function CaseMG() {
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
-            <MetricCard value={t("metric1Value")} label={t("metric1Label")} />
-            <MetricCard value={t("metric2Value")} label={t("metric2Label")} accent />
-            <MetricCard value={t("metric3Value")} label={t("metric3Label")} />
+            <Reveal delay={0}>
+              <MetricCard value={t("metric1Value")} label={t("metric1Label")} />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <MetricCard value={t("metric2Value")} label={t("metric2Label")} accent />
+            </Reveal>
+            <Reveal delay={0.2}>
+              <MetricCard value={t("metric3Value")} label={t("metric3Label")} />
+            </Reveal>
           </div>
 
-          <div className="rounded-3xl bg-forest p-8 lg:p-14 relative overflow-hidden">
-            <div className="pointer-events-none absolute -top-20 -right-20 size-64 rounded-full bg-gold/15 blur-3xl" />
+          <Reveal delay={0.15}>
+            <div className="rounded-3xl bg-forest p-8 lg:p-14 relative overflow-hidden">
+              <div className="pointer-events-none absolute -top-20 -right-20 size-64 rounded-full bg-gold/15 blur-3xl" />
 
-            <Quote className="size-12 text-gold/40 mb-5" />
+              <Quote className="size-12 text-gold/40 mb-5" />
 
-            <blockquote className="font-display text-xl sm:text-2xl lg:text-3xl text-cream leading-relaxed max-w-4xl">
-              "{t("quote")}"
-            </blockquote>
+              <blockquote className="font-display text-xl sm:text-2xl lg:text-3xl text-cream leading-relaxed max-w-4xl">
+                &ldquo;{t("quote")}&rdquo;
+              </blockquote>
 
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center">
-                <span className="font-display text-lg text-gold">MG</span>
-              </div>
-              <div>
-                <p className="text-cream font-medium">{t("author")}</p>
-                <p className="text-sm text-cream/60">{t("role")}</p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center">
+                  <span className="font-display text-lg text-gold">MG</span>
+                </div>
+                <div>
+                  <p className="text-cream font-medium">{t("author")}</p>
+                  <p className="text-sm text-cream/60">{t("role")}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -62,7 +72,7 @@ function MetricCard({ value, label, accent = false }: { value: string; label: st
           accent ? "text-gold-deep" : "text-forest"
         }`}
       >
-        {value}
+        <Counter value={value} />
       </p>
       <p className="mt-3 text-sm text-ink-soft">{label}</p>
     </div>

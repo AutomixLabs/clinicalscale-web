@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl"
 import { Layers, Sparkles, Flag, ArrowRightLeft } from "lucide-react"
+import { Reveal } from "@/components/animations/Reveal"
 
 export function WhyClinicalScale() {
   const t = useTranslations("why")
@@ -27,16 +28,15 @@ export function WhyClinicalScale() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {items.map((it, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-line bg-cream p-7 lg:p-8 hover:border-gold/40 transition-colors"
-            >
-              <div className="w-12 h-12 rounded-xl bg-forest text-cream flex items-center justify-center mb-5">
-                <it.icon className="size-5" />
+            <Reveal key={i} delay={(i % 2) * 0.08} y={24}>
+              <div className="rounded-2xl border border-line bg-cream p-7 lg:p-8 hover:border-gold/40 hover:-translate-y-1 transition-all duration-300 h-full">
+                <div className="w-12 h-12 rounded-xl bg-forest text-cream flex items-center justify-center mb-5">
+                  <it.icon className="size-5" />
+                </div>
+                <h3 className="font-display text-xl lg:text-2xl font-medium text-forest mb-3">{it.title}</h3>
+                <p className="text-sm lg:text-base text-ink-soft leading-relaxed">{it.desc}</p>
               </div>
-              <h3 className="font-display text-xl lg:text-2xl font-medium text-forest mb-3">{it.title}</h3>
-              <p className="text-sm lg:text-base text-ink-soft leading-relaxed">{it.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

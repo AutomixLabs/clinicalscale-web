@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl"
 import { Monitor, FileText, Wallet, Keyboard } from "lucide-react"
+import { Reveal } from "@/components/animations/Reveal"
 
 export function Problem() {
   const t = useTranslations("problem")
@@ -28,22 +29,21 @@ export function Problem() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
           {items.map((it, i) => (
-            <div
-              key={i}
-              className="group rounded-2xl border border-line bg-cream p-6 lg:p-7 hover:border-gold/40 hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <div className="flex items-start gap-4">
-                <div className="shrink-0 w-11 h-11 rounded-xl bg-forest/8 flex items-center justify-center group-hover:bg-gold/15 transition-colors">
-                  <it.icon className="size-5 text-forest group-hover:text-gold-deep transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-lg font-medium text-forest mb-1.5">
-                    {it.title}
-                  </h3>
-                  <p className="text-sm text-ink-soft leading-relaxed">{it.desc}</p>
+            <Reveal key={i} delay={i * 0.08} y={20}>
+              <div className="group rounded-2xl border border-line bg-cream p-6 lg:p-7 hover:border-gold/40 hover:-translate-y-1 transition-all duration-300 h-full">
+                <div className="flex items-start gap-4">
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-forest/8 flex items-center justify-center group-hover:bg-gold/15 transition-colors">
+                    <it.icon className="size-5 text-forest group-hover:text-gold-deep transition-colors" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-display text-lg font-medium text-forest mb-1.5">
+                      {it.title}
+                    </h3>
+                    <p className="text-sm text-ink-soft leading-relaxed">{it.desc}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

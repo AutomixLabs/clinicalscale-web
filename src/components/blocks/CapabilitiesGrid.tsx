@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Database,
 } from "lucide-react"
+import { Reveal } from "@/components/animations/Reveal"
 
 export function CapabilitiesGrid() {
   const t = useTranslations("grid")
@@ -40,16 +41,15 @@ export function CapabilitiesGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {items.map((it, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-line bg-cream p-6 hover:border-gold/40 hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <div className="w-10 h-10 rounded-lg bg-forest/8 flex items-center justify-center mb-4">
-                <it.icon className="size-5 text-forest" />
+            <Reveal key={i} delay={(i % 4) * 0.06} y={20}>
+              <div className="rounded-2xl border border-line bg-cream p-6 hover:border-gold/40 hover:-translate-y-1 transition-all duration-300 h-full">
+                <div className="w-10 h-10 rounded-lg bg-forest/8 flex items-center justify-center mb-4">
+                  <it.icon className="size-5 text-forest" />
+                </div>
+                <h3 className="font-display text-lg font-medium text-forest mb-1.5">{it.title}</h3>
+                <p className="text-sm text-ink-soft leading-relaxed">{it.desc}</p>
               </div>
-              <h3 className="font-display text-lg font-medium text-forest mb-1.5">{it.title}</h3>
-              <p className="text-sm text-ink-soft leading-relaxed">{it.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

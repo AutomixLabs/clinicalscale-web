@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl"
 import { Mic, FileSignature, Tablet, ArrowUpRight } from "lucide-react"
+import { VoiceWave } from "@/components/animations/VoiceWave"
+import { Reveal } from "@/components/animations/Reveal"
 
 export function KillerFeatures() {
   const t = useTranslations("killer")
@@ -41,29 +43,28 @@ export function KillerFeatures() {
           </h2>
         </div>
 
-        <div className="space-y-10 lg:space-y-16">
+        <div className="space-y-10 lg:space-y-24">
           {features.map((f, i) => {
             const reversed = i % 2 === 1
             return (
-              <div
-                key={i}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}
-              >
-                <div className={reversed ? "lg:order-2" : ""}>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] tracking-display font-medium text-gold-deep mb-4">
-                    <f.icon className="size-3.5" />
-                    {f.tag}
-                  </span>
-                  <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-forest leading-tight mb-5">
-                    {f.title}
-                  </h3>
-                  <p className="text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl">
-                    {f.desc}
-                  </p>
-                </div>
+              <Reveal key={i} y={36} delay={0}>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                  <div className={reversed ? "lg:order-2" : ""}>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] tracking-display font-medium text-gold-deep mb-4">
+                      <f.icon className="size-3.5" />
+                      {f.tag}
+                    </span>
+                    <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-forest leading-tight mb-5">
+                      {f.title}
+                    </h3>
+                    <p className="text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl">
+                      {f.desc}
+                    </p>
+                  </div>
 
-                <div className={reversed ? "lg:order-1" : ""}>{f.visual}</div>
-              </div>
+                  <div className={reversed ? "lg:order-1" : ""}>{f.visual}</div>
+                </div>
+              </Reveal>
             )
           })}
         </div>
@@ -74,42 +75,45 @@ export function KillerFeatures() {
 
 function DictationVisual() {
   return (
-    <div className="relative rounded-3xl bg-gradient-to-br from-cream-deep to-cream-soft border border-line p-8 shadow-sm">
-      <div className="flex items-center gap-3 mb-5 text-xs text-ink-soft font-medium">
-        <span className="size-2 rounded-full bg-red-500 animate-pulse" />
-        Grabando · 02:14
-      </div>
-      <div className="space-y-3 mb-6">
-        <SoundBar h="h-8" delay="0s" />
-        <SoundBar h="h-5" delay="0.1s" />
-        <SoundBar h="h-10" delay="0.2s" />
-        <SoundBar h="h-6" delay="0.3s" />
-      </div>
-      <div className="rounded-xl bg-cream border border-line-soft p-4 text-sm">
-        <p className="text-[10px] tracking-display font-medium text-gold-deep mb-2">SOAP · Generado</p>
-        <p className="text-forest font-medium mb-1.5">S — Subjetivo</p>
-        <p className="text-ink-soft text-xs leading-relaxed mb-2.5">
-          Paciente refiere sensibilidad en 36 al frío desde hace 2 semanas.
-        </p>
-        <p className="text-forest font-medium mb-1.5">O — Objetivo</p>
-        <p className="text-ink-soft text-xs leading-relaxed">
-          Test de frío positivo, percusión negativa, sin caries clínica visible.
-        </p>
-      </div>
-    </div>
-  )
-}
+    <div className="relative rounded-3xl bg-gradient-to-br from-cream-deep to-cream-soft border border-line p-8 shadow-lg overflow-hidden">
+      <div className="pointer-events-none absolute -top-12 -right-12 size-48 rounded-full bg-gold/15 blur-3xl" />
 
-function SoundBar({ h, delay }: { h: string; delay: string }) {
-  return (
-    <div className="flex items-end gap-1">
-      {Array.from({ length: 18 }).map((_, i) => (
-        <div
-          key={i}
-          className={`w-1 bg-gold rounded-full ${i % 3 === 0 ? "h-6" : i % 2 === 0 ? "h-4" : "h-2"}`}
-          style={{ animationDelay: delay }}
-        />
-      ))}
+      <div className="flex items-center justify-between mb-6 relative">
+        <div className="flex items-center gap-2.5 text-xs font-medium text-ink-soft">
+          <span className="relative flex size-2.5">
+            <span className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-75" />
+            <span className="relative rounded-full bg-red-500 size-2.5" />
+          </span>
+          Grabando en directo
+        </div>
+        <span className="font-mono text-xs text-muted">02:14</span>
+      </div>
+
+      <div className="rounded-2xl bg-forest p-6 mb-5 relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-forest via-transparent to-forest opacity-40" />
+        <VoiceWave bars={56} />
+      </div>
+
+      <div className="rounded-xl bg-cream border border-line-soft p-4">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-[10px] tracking-display font-medium text-gold-deep">SOAP · Generado por IA</p>
+          <span className="text-[10px] text-muted">hace 1s</span>
+        </div>
+        <div className="space-y-2.5 text-sm">
+          <div>
+            <p className="text-forest font-medium mb-1">S — Subjetivo</p>
+            <p className="text-ink-soft text-xs leading-relaxed">
+              Paciente refiere sensibilidad en 36 al frío desde hace 2 semanas.
+            </p>
+          </div>
+          <div>
+            <p className="text-forest font-medium mb-1">O — Objetivo</p>
+            <p className="text-ink-soft text-xs leading-relaxed">
+              Test de frío positivo, percusión negativa, sin caries clínica visible.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
