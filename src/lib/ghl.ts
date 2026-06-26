@@ -42,6 +42,10 @@ export async function forwardToGhl(payload: Record<string, unknown>): Promise<Gh
     ...payload,
   }
 
+  // Safety net: always log the lead so it's recoverable from Vercel function
+  // logs even if the GHL webhook/workflow silently fails to create the contact.
+  console.log("[ghl] demo lead (forwarding)", JSON.stringify(body))
+
   try {
     const res = await fetch(url, {
       method: "POST",
