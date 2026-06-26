@@ -135,5 +135,30 @@
     "loginHeading": "Acceso",
     "loginCta": "Acceder a la plataforma",
     "language": "Idioma"
+  },
+  "form": {
+    "name": "Nombre",
+    "namePh": "Tu nombre y apellidos",
+    "email": "Email",
+    "emailPh": "tucorreo@clinica.com",
+    "company": "Nombre de la clínica",
+    "companyPh": "Clínica Dental…",
+    "employees": "Tamaño de la clínica",
+    "employeesPh": "Selecciona una opción",
+    "size1": "1–3 profesionales",
+    "size2": "4–10 profesionales",
+    "size3": "11–25 profesionales",
+    "size4": "Más de 25 profesionales",
+    "message": "¿Qué te gustaría ver en la demo?",
+    "messagePh": "Cuéntanos brevemente tu caso (opcional)",
+    "agree": "Acepto que Clinical Scale me contacte para coordinar la demo.",
+    "submit": "Pedir una demo gratis",
+    "sending": "Enviando…",
+    "successTitle": "¡Gracias! Hemos recibido tu solicitud",
+    "successBody": "Te contactaremos en menos de 24 h laborables para coordinar tu demo.",
+    "error": "No hemos podido enviar tu solicitud. Inténtalo de nuevo o escríbenos a hola@clinicalscale.com.",
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Introduce un email válido",
+    "microcopy": "Respuesta en menos de 24 h laborables · Sin tarjeta · Sin compromiso"
   }
 }
