@@ -27,6 +27,7 @@ export function DemoForm() {
       .string()
       .min(1, t("required"))
       .regex(/^[^@\s]+@[^@\s]+\.[^@\s]+$/, t("invalidEmail")),
+    phone: z.string().optional(),
     company: z.string().optional(),
     employees: z.string().optional(),
     message: z.string().optional(),
@@ -41,7 +42,7 @@ export function DemoForm() {
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { name: "", email: "", company: "", employees: "", message: "", website: "" },
+    defaultValues: { name: "", email: "", phone: "", company: "", employees: "", message: "", website: "" },
   })
 
   async function onSubmit(values: FormValues) {
@@ -72,15 +73,15 @@ export function DemoForm() {
   }
 
   const fieldCls =
-    "h-11 rounded-lg border-line bg-cream-soft text-ink placeholder:text-muted focus-visible:border-gold focus-visible:ring-gold/30"
-  const labelCls = "mb-1.5 block text-sm font-medium text-ink"
+    "h-11 rounded-lg border border-[#CBB994] bg-white text-ink placeholder:text-muted focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40"
+  const labelCls = "mb-1.5 block text-sm font-semibold text-forest"
   const errCls = "mt-1 text-xs text-red-600"
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="rounded-2xl bg-white p-6 sm:p-8 text-left shadow-[0_24px_48px_-12px_rgba(10,20,15,0.25)]"
+      className="rounded-2xl bg-white p-6 sm:p-8 text-left shadow-[0_24px_48px_-12px_rgba(10,20,15,0.25)] ring-1 ring-forest/10"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
@@ -98,31 +99,38 @@ export function DemoForm() {
           {errors.email && <p className={errCls}>{errors.email.message}</p>}
         </div>
         <div>
+          <label htmlFor="df-phone" className={labelCls}>
+            {t("phone")}
+          </label>
+          <Input id="df-phone" type="tel" className={fieldCls} placeholder={t("phonePh")} {...register("phone")} />
+        </div>
+        <div>
           <label htmlFor="df-company" className={labelCls}>
             {t("company")}
           </label>
           <Input id="df-company" className={fieldCls} placeholder={t("companyPh")} {...register("company")} />
         </div>
-        <div>
-          <label htmlFor="df-employees" className={labelCls}>
-            {t("employees")}
-          </label>
-          <select
-            id="df-employees"
-            className="h-11 w-full rounded-lg border border-line bg-cream-soft px-3 text-sm text-ink outline-none focus-visible:border-gold focus-visible:ring-[3px] focus-visible:ring-gold/30"
-            defaultValue=""
-            {...register("employees")}
-          >
-            <option value="" disabled>
-              {t("employeesPh")}
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="df-employees" className={labelCls}>
+          {t("employees")}
+        </label>
+        <select
+          id="df-employees"
+          className="h-11 w-full rounded-lg border border-[#CBB994] bg-white px-3 text-sm text-ink outline-none focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40"
+          defaultValue=""
+          {...register("employees")}
+        >
+          <option value="" disabled>
+            {t("employeesPh")}
+          </option>
+          {SIZE_OPTIONS.map((o) => (
+            <option key={o.v} value={o.v}>
+              {t(o.k)}
             </option>
-            {SIZE_OPTIONS.map((o) => (
-              <option key={o.v} value={o.v}>
-                {t(o.k)}
-              </option>
-            ))}
-          </select>
-        </div>
+          ))}
+        </select>
       </div>
 
       <div className="mt-4">
@@ -132,7 +140,7 @@ export function DemoForm() {
         <Textarea
           id="df-message"
           rows={3}
-          className="rounded-lg border-line bg-cream-soft text-ink placeholder:text-muted focus-visible:border-gold focus-visible:ring-gold/30"
+          className="rounded-lg border border-[#CBB994] bg-white text-ink placeholder:text-muted focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40"
           placeholder={t("messagePh")}
           {...register("message")}
         />
@@ -173,7 +181,7 @@ export function DemoForm() {
         )}
       </button>
 
-      <p className="mt-4 text-center text-xs text-muted">{t("microcopy")}</p>
+      <p className="mt-4 text-center text-xs text-ink-soft">{t("microcopy")}</p>
     </form>
   )
 }

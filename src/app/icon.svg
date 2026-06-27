@@ -1,9 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#059669"/>
-  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="32" cy="32" r="18"/>
-    <path d="M22 36s4 6 10 6 10-6 10-6"/>
-    <line x1="25" y1="26" x2="25.01" y2="26"/>
-    <line x1="39" y1="26" x2="39.01" y2="26"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Clinical Scale">
+  <defs>
+    <linearGradient id="cs-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DEC59C" />
+      <stop offset="100%" stop-color="#A88656" />
+    </linearGradient>
+    <linearGradient id="cs-forest" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A4434" />
+      <stop offset="100%" stop-color="#1F3B2D" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="#F5EDE2" />
+  <path d="M 50 30 A 80 80 0 0 1 100 18" fill="none" stroke="url(#cs-gold)" stroke-width="14" stroke-linecap="butt" />
+  <path d="M 108 18 A 80 80 0 0 1 173 65" fill="none" stroke="url(#cs-forest)" stroke-width="14" stroke-linecap="butt" />
+  <path d="M 178 75 A 80 80 0 1 1 45 36" fill="none" stroke="url(#cs-forest)" stroke-width="14" stroke-linecap="butt" />
+  <line x1="100" y1="100" x2="148" y2="50" stroke="url(#cs-gold)" stroke-width="3" stroke-linecap="round" />
+  <circle cx="100" cy="100" r="6" fill="#1F3B2D" />
+  <circle cx="100" cy="100" r="3" fill="#C9A876" />
+  <text x="100" y="118" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="600" font-size="58" fill="#1F3B2D" letter-spacing="-3">CS</text>
 </svg>

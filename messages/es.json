@@ -159,6 +159,8 @@
     "error": "No hemos podido enviar tu solicitud. Inténtalo de nuevo o escríbenos a hola@clinicalscale.com.",
     "required": "Este campo es obligatorio",
     "invalidEmail": "Introduce un email válido",
-    "microcopy": "Respuesta en menos de 24 h laborables · Sin tarjeta · Sin compromiso"
+    "microcopy": "Respuesta en menos de 24 h laborables · Sin tarjeta · Sin compromiso",
+    "phone": "Teléfono",
+    "phonePh": "+34 600 000 000"
   }
 }
