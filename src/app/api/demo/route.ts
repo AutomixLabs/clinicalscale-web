@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     }
 
     // Required fields
-    for (const f of ["name", "email"]) {
+    for (const f of ["name", "email", "phone"]) {
       if (!body[f] || typeof body[f] !== "string" || body[f].trim() === "") {
         return NextResponse.json({ ok: false, error: `Campo requerido: ${f}` }, { status: 400 })
       }

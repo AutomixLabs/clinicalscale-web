@@ -27,7 +27,7 @@ export function DemoForm() {
       .string()
       .min(1, t("required"))
       .regex(/^[^@\s]+@[^@\s]+\.[^@\s]+$/, t("invalidEmail")),
-    phone: z.string().optional(),
+    phone: z.string().min(6, t("required")),
     company: z.string().optional(),
     employees: z.string().optional(),
     message: z.string().optional(),
@@ -100,9 +100,10 @@ export function DemoForm() {
         </div>
         <div>
           <label htmlFor="df-phone" className={labelCls}>
-            {t("phone")}
+            {t("phone")} *
           </label>
-          <Input id="df-phone" type="tel" className={fieldCls} placeholder={t("phonePh")} {...register("phone")} />
+          <Input id="df-phone" type="tel" className={fieldCls} placeholder={t("phonePh")} aria-invalid={!!errors.phone} {...register("phone")} />
+          {errors.phone && <p className={errCls}>{errors.phone.message}</p>}
         </div>
         <div>
           <label htmlFor="df-company" className={labelCls}>
